@@ -1,0 +1,35 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Fri Feb 21 13:13:54 2025
+# Process ID: 3248
+# Current directory: D:/Desktop/FPGA/FPGA_FOC/vivado_FOC
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent29304 D:\Desktop\FPGA\FPGA_FOC\vivado_FOC\vivado_FOC.xpr
+# Log file: D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado.log
+# Journal file: D:/Desktop/FPGA/FPGA_FOC/vivado_FOC\vivado.jou
+# Running On: ywsmy, OS: Windows, CPU Frequency: 3194 MHz, CPU Physical cores: 16, Host memory: 33492 MB
+#-----------------------------------------------------------
+start_gui
+open_project D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.xpr
+upgrade_project -migrate_output_products
+update_compile_order -fileset sources_1
+launch_simulation
+source fpga_top.tcl
+reset_run synth_1
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+wait_on_run synth_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+close_design
+open_run impl_1
+reset_run impl_1
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+reset_run impl_1
+close_sim

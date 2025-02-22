@@ -1,0 +1,336 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Fri Feb 21 13:13:54 2025
+# Process ID: 3248
+# Current directory: D:/Desktop/FPGA/FPGA_FOC/vivado_FOC
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent29304 D:\Desktop\FPGA\FPGA_FOC\vivado_FOC\vivado_FOC.xpr
+# Log file: D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado.log
+# Journal file: D:/Desktop/FPGA/FPGA_FOC/vivado_FOC\vivado.jou
+# Running On: ywsmy, OS: Windows, CPU Frequency: 3194 MHz, CPU Physical cores: 16, Host memory: 33492 MB
+#-----------------------------------------------------------
+start_gui
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kc705:part0:1.6 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kc705/1.6/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.6 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.6/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.7 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.7/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu1500:part0:1.2 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu1500/1.2/board.xml as part xcku115-flvb2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vc707:part0:1.4 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vc707/1.4/board.xml as part xc7vx485tffg1761-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vc709:part0:1.8 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vc709/1.8/board.xml as part xc7vx690tffg1761-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:2.2 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/2.2/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:3.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/3.0/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:3.1 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/3.1/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:3.2 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/3.2/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190_newl:part0:1.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190_newl/production/1.0/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190_newl:part0:1.1 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190_newl/production/1.1/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu108:part0:1.6 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu108/1.6/board.xml as part xcvu095-ffva2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu108:part0:1.7 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu108/1.7/board.xml as part xcvu095-ffva2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu110:part0:1.4 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu110/1.4/board.xml as part xcvu190-flgc2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu118/2.0/board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.3 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu118/2.3/board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.4 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu118/2.4/board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu129:part0:1.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu129/production/1.0/board.xml as part xcvu29p-fsga2577-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu1525:part0:1.3 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu1525/1.3/board.xml as part xcvu9p-fsgd2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280:part0:1.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/production/1.0/board.xml as part xcve2802-vsvh1760-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es:part0:1.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_a/1.0/board.xml as part xcve2802-vsvh1760-2lp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es:part0:1.1 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_a/1.1/board.xml as part xcve2802-vsvh1760-2lp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es_revb:part0:1.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_b/1.0/board.xml as part xcve2802-vsvh1760-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es_revb:part0:1.1 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_b/1.1/board.xml as part xcve2802-vsvh1760-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vermeo_t1_mpsoc:part0:1.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vermeo_t1_mpsoc/1.0/board.xml as part xczu19eg-ffvd1760-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vermeo_t1_rfsoc:part0:1.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vermeo_t1_rfsoc/1.0/board.xml as part xczu21dr-ffvd1156-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158:part0:1.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/production/1.0/board.xml as part xcvh1582-vsva3697-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158:part0:1.1 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/production/1.1/board.xml as part xcvh1582-vsva3697-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158_es:part0:1.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/es/1.0/board.xml as part xcvh1582-vsva3697-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158_es:part0:1.1 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/es/1.1/board.xml as part xcvh1582-vsva3697-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:2.2 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/2.2/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:3.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/3.0/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:3.1 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/3.1/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:3.2 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/3.2/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180_newl:part0:1.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180_newl/production/1.0/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180_newl:part0:1.1 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180_newl/production/1.1/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120:part0:1.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/production/1.0/board.xml as part xcvp1202-vsva2785-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120:part0:1.1 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/production/1.1/board.xml as part xcvp1202-vsva2785-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120:part0:1.2 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/production/1.2/board.xml as part xcvp1202-vsva2785-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk180:part0:1.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk180/production/1.0/board.xml as part xcvp1802-lsvc4072-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk180:part0:1.1 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk180/production/1.1/board.xml as part xcvp1802-lsvc4072-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zc706:part0:1.4 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zc706/1.4/board.xml as part xc7z045ffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu102:part0:3.3 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu102/3.3/board.xml as part xczu9eg-ffvb1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu102:part0:3.4 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu102/3.4/board.xml as part xczu9eg-ffvb1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu104:part0:1.1 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu104/1.1/board.xml as part xczu7ev-ffvc1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu106:part0:2.4 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu106/2.4/board.xml as part xczu7ev-ffvc1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu106:part0:2.5 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu106/2.5/board.xml as part xczu7ev-ffvc1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu106:part0:2.6 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu106/2.6/board.xml as part xczu7ev-ffvc1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.2 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu111/1.2/board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.3 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu111/1.3/board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.4 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu111/1.4/board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu1275:part0:1.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu1275/1.0/board.xml as part xczu29dr-ffvf1760-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu1285:part0:1.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu1285/1.0/board.xml as part xczu39dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208:part0:2.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208/production/2.0/board.xml as part xczu48dr-fsvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216:part0:2.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216/production/2.0/board.xml as part xczu49dr-ffvf1760-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/2.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at M:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+open_project D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.xpr
+INFO: [Project 1-313] Project file moved from 'C:/Users/13474/Desktop/FPGA_FOC/motor_fpga/vivado_FOC' since last save.
+Scanning sources...
+Finished scanning sources
+INFO: [Project 1-230] Project 'vivado_FOC.xpr' upgraded for this version of Vivado.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'M:/Xilinx/Vivado/2023.2/data/ip'.
+open_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1373.508 ; gain = 99.938
+upgrade_project -migrate_output_products
+update_compile_order -fileset sources_1
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'fpga_top'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'M:/Xilinx/Vivado/2023.2/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'fpga_top' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -L uvm -prj fpga_top_vlog.prj"
+ECHO 处于关闭状态。
+ECHO 处于关闭状态。
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/f_30M.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module f_30M
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/adc_ad7928.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module adc_ad7928
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/cartesian2polar.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cartesian2polar
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/clark_tr.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clark_tr
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/foc_top.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module foc_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/hold_detect.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module hold_detect
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/i2c_register_read.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_register_read
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/park_tr.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module park_tr
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/pi_controller.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pi_controller
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/sincos.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sincos
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/svpwm.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svpwm
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/uart_monitor.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module uart_monitor
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/fpga_top.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fpga_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '4' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot fpga_top_behav xil_defaultlib.fpga_top xil_defaultlib.glbl -log elaborate.log"
+ECHO 处于关闭状态。
+ECHO 处于关闭状态。
+Vivado Simulator v2023.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: M:/Xilinx/Vivado/2023.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot fpga_top_behav xil_defaultlib.fpga_top xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+WARNING: [XSIM 43-4100] "D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.f_30M
+Compiling module xil_defaultlib.i2c_register_read(CLK_DIV=16'b01...
+Compiling module xil_defaultlib.adc_ad7928(CH_CNT=3'b010,CH0=3'b...
+Compiling module xil_defaultlib.clark_tr
+Compiling module xil_defaultlib.sincos
+Compiling module xil_defaultlib.park_tr
+Compiling module xil_defaultlib.pi_controller(Kp=24'b01010000110...
+Compiling module xil_defaultlib.cartesian2polar
+Compiling module xil_defaultlib.svpwm
+Compiling module xil_defaultlib.hold_detect(SAMPLE_DELAY=16'b011...
+Compiling module xil_defaultlib.foc_top_default
+Compiling module xil_defaultlib.uart_monitor
+Compiling module xil_defaultlib.fpga_top
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot fpga_top_behav
+run_program: Time (s): cpu = 00:00:01 ; elapsed = 00:00:20 . Memory (MB): peak = 1389.645 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '20' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "fpga_top_behav -key {Behavioral:sim_1:Functional:fpga_top} -tclbatch {fpga_top.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source fpga_top.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'fpga_top_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:31 . Memory (MB): peak = 1449.754 ; gain = 60.109
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.runs/synth_1
+
+launch_runs impl_1 -jobs 8
+[Sat Feb 22 00:39:13 2025] Launched synth_1...
+Run output will be captured here: D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.runs/synth_1/runme.log
+[Sat Feb 22 00:39:13 2025] Launched impl_1...
+Run output will be captured here: D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.runs/impl_1/runme.log
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.runs/synth_1
+
+launch_runs synth_1 -jobs 8
+[Sat Feb 22 00:39:33 2025] Launched synth_1...
+Run output will be captured here: D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.runs/synth_1/runme.log
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+Command: synth_design -rtl -rtl_skip_mlo -name rtl_1
+Starting synth_design
+Using part: xc7z020clg400-2
+Top: fpga_top
+INFO: [Device 21-403] Loading part xc7z020clg400-2
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 37252
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:13 . Memory (MB): peak = 2328.402 ; gain = 432.539
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-11065] parameter 'Kp1' becomes localparam in 'pi_controller' with formal parameter declaration list [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/pi_controller.sv:20]
+WARNING: [Synth 8-11065] parameter 'Ki1' becomes localparam in 'pi_controller' with formal parameter declaration list [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/pi_controller.sv:21]
+INFO: [Synth 8-6157] synthesizing module 'fpga_top' [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/fpga_top.sv:14]
+INFO: [Synth 8-6157] synthesizing module 'f_30M' [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/f_30M.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'f_30M' (0#1) [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/f_30M.v:1]
+INFO: [Synth 8-6157] synthesizing module 'i2c_register_read' [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/i2c_register_read.sv:7]
+	Parameter CLK_DIV bound to: 16'b0000000000001010 
+	Parameter SLAVE_ADDR bound to: 7'b0110110 
+	Parameter REGISTER_ADDR bound to: 8'b00001110 
+INFO: [Synth 8-6155] done synthesizing module 'i2c_register_read' (0#1) [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/i2c_register_read.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'adc_ad7928' [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/adc_ad7928.sv:9]
+	Parameter CH_CNT bound to: 3'b010 
+	Parameter CH0 bound to: 3'b001 
+	Parameter CH1 bound to: 3'b010 
+	Parameter CH2 bound to: 3'b011 
+INFO: [Synth 8-6155] done synthesizing module 'adc_ad7928' (0#1) [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/adc_ad7928.sv:9]
+INFO: [Synth 8-6157] synthesizing module 'foc_top' [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/foc_top.sv:9]
+	Parameter INIT_CYCLES bound to: 15000000 - type: integer 
+	Parameter ANGLE_INV bound to: 1'b0 
+	Parameter POLE_PAIR bound to: 8'b00001110 
+	Parameter MAX_AMP bound to: 9'b110000000 
+	Parameter SAMPLE_DELAY bound to: 9'b001111000 
+	Parameter Kp bound to: 24'b000000000001010000110001 
+	Parameter Ki bound to: 24'b000000000000000000000011 
+INFO: [Synth 8-6157] synthesizing module 'clark_tr' [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/clark_tr.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'clark_tr' (0#1) [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/clark_tr.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'park_tr' [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/park_tr.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'sincos' [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/sincos.sv:9]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/sincos.sv:36]
+INFO: [Synth 8-6155] done synthesizing module 'sincos' (0#1) [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/sincos.sv:9]
+INFO: [Synth 8-6155] done synthesizing module 'park_tr' (0#1) [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/park_tr.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'pi_controller' [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/pi_controller.sv:7]
+	Parameter Kp bound to: 24'b000000000001010000110001 
+	Parameter Ki bound to: 24'b000000000000000000000011 
+INFO: [Synth 8-6155] done synthesizing module 'pi_controller' (0#1) [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/pi_controller.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'cartesian2polar' [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/cartesian2polar.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'cartesian2polar' (0#1) [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/cartesian2polar.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'svpwm' [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/svpwm.sv:11]
+INFO: [Synth 8-6155] done synthesizing module 'svpwm' (0#1) [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/svpwm.sv:11]
+INFO: [Synth 8-6157] synthesizing module 'hold_detect' [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/hold_detect.sv:7]
+	Parameter SAMPLE_DELAY bound to: 16'b0000000001111000 
+INFO: [Synth 8-6155] done synthesizing module 'hold_detect' (0#1) [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/hold_detect.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'foc_top' (0#1) [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/foc_top.sv:9]
+INFO: [Synth 8-6157] synthesizing module 'uart_monitor' [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/uart_monitor.sv:7]
+	Parameter CLK_DIV bound to: 16'b0001100001101010 
+INFO: [Synth 8-155] case statement is not full and has no default [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/uart_monitor.sv:75]
+INFO: [Synth 8-6155] done synthesizing module 'uart_monitor' (0#1) [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/uart_monitor.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'fpga_top' (0#1) [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/fpga_top.sv:14]
+WARNING: [Synth 8-3848] Net o_en in module/entity pi_controller does not have driver. [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/pi_controller.sv:16]
+WARNING: [Synth 8-6014] Unused sequential element cnt_reg was removed.  [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/fpga_top.sv:169]
+WARNING: [Synth 8-7129] Port o_en in module pi_controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_en in module pi_controller is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:18 . Memory (MB): peak = 2486.746 ; gain = 590.883
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:19 . Memory (MB): peak = 2486.746 ; gain = 590.883
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:19 . Memory (MB): peak = 2486.746 ; gain = 590.883
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.057 . Memory (MB): peak = 2486.746 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/constrs_1/new/fpga_top.xdc]
+Finished Parsing XDC File [D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/constrs_1/new/fpga_top.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2580.922 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+RTL Elaboration Complete:  : Time (s): cpu = 00:00:17 ; elapsed = 00:00:27 . Memory (MB): peak = 2656.977 ; gain = 761.113
+34 Infos, 6 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:21 ; elapsed = 00:00:52 . Memory (MB): peak = 2656.977 ; gain = 1144.301
+launch_runs impl_1 -jobs 8
+[Sat Feb 22 00:41:49 2025] Launched impl_1...
+Run output will be captured here: D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.runs/impl_1/runme.log
+close_design
+open_run impl_1
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.025 . Memory (MB): peak = 2683.031 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 218 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2023.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Read ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 2683.031 ; gain = 0.000
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+INFO: [Designutils 20-5722] Start Reading Physical Databases.
+Reading placement.
+Read Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 2934.230 ; gain = 0.000
+Reading placer database...
+Read Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.028 . Memory (MB): peak = 2934.230 ; gain = 0.000
+Read PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.215 . Memory (MB): peak = 2934.230 ; gain = 0.000
+Read PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2934.230 ; gain = 0.000
+Reading routing.
+Read RouteStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.116 . Memory (MB): peak = 2934.230 ; gain = 0.000
+Read Physdb Files: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.409 . Memory (MB): peak = 2934.230 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.411 . Memory (MB): peak = 2934.230 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2934.230 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
+
+open_run: Time (s): cpu = 00:00:17 ; elapsed = 00:00:15 . Memory (MB): peak = 3043.348 ; gain = 360.316
+WARNING: [Timing 38-313] There are no user specified timing constraints. Timing constraints are needed for proper timing analysis.
+reset_run impl_1
+launch_runs impl_1 -jobs 8
+[Sat Feb 22 00:49:32 2025] Launched impl_1...
+Run output will be captured here: D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.runs/impl_1/runme.log
+reset_run impl_1
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Sat Feb 22 00:51:27 2025...

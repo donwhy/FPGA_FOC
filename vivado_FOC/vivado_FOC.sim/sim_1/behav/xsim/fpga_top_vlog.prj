@@ -1,0 +1,23 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../vivado_FOC.srcs/sources_1/new/f_30M.v" \
+
+sv xil_defaultlib  \
+"../../../../vivado_FOC.srcs/sources_1/new/adc_ad7928.sv" \
+"../../../../vivado_FOC.srcs/sources_1/new/cartesian2polar.sv" \
+"../../../../vivado_FOC.srcs/sources_1/new/clark_tr.sv" \
+"../../../../vivado_FOC.srcs/sources_1/new/foc_top.sv" \
+"../../../../vivado_FOC.srcs/sources_1/new/hold_detect.sv" \
+"../../../../vivado_FOC.srcs/sources_1/new/i2c_register_read.sv" \
+"../../../../vivado_FOC.srcs/sources_1/new/park_tr.sv" \
+"../../../../vivado_FOC.srcs/sources_1/new/pi_controller.sv" \
+"../../../../vivado_FOC.srcs/sources_1/new/sincos.sv" \
+"../../../../vivado_FOC.srcs/sources_1/new/svpwm.sv" \
+"../../../../vivado_FOC.srcs/sources_1/new/uart_monitor.sv" \
+"../../../../vivado_FOC.srcs/sources_1/new/fpga_top.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

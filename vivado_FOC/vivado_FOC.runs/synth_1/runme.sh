@@ -3,7 +3,8 @@
 # 
 # Vivado(TM)
 # runme.sh: a Vivado-generated Runs Script for UNIX
-# Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+# Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+# Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 # 
 
 echo "This script was generated under a different operating system."
@@ -11,9 +12,9 @@ echo "Please update the PATH and LD_LIBRARY_PATH variables below, before executi
 exit
 
 if [ -z "$PATH" ]; then
-  PATH=D:/XILINX/SDK/2018.3/bin;D:/XILINX/Vivado/2018.3/ids_lite/ISE/bin/nt64;D:/XILINX/Vivado/2018.3/ids_lite/ISE/lib/nt64:D:/XILINX/Vivado/2018.3/bin
+  PATH=M:/Xilinx/Vivado/2023.2/ids_lite/ISE/bin/nt64;M:/Xilinx/Vivado/2023.2/ids_lite/ISE/lib/nt64:M:/Xilinx/Vivado/2023.2/bin
 else
-  PATH=D:/XILINX/SDK/2018.3/bin;D:/XILINX/Vivado/2018.3/ids_lite/ISE/bin/nt64;D:/XILINX/Vivado/2018.3/ids_lite/ISE/lib/nt64:D:/XILINX/Vivado/2018.3/bin:$PATH
+  PATH=M:/Xilinx/Vivado/2023.2/ids_lite/ISE/bin/nt64;M:/Xilinx/Vivado/2023.2/ids_lite/ISE/lib/nt64:M:/Xilinx/Vivado/2023.2/bin:$PATH
 fi
 export PATH
 
@@ -24,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/13474/Desktop/FPGA_FOC/motor_fpga/vivado_FOC/vivado_FOC.runs/synth_1'
+HD_PWD='D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

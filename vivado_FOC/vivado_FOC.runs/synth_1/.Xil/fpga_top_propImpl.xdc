@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:C:/Users/13474/Desktop/FPGA_FOC/motor_fpga/vivado_FOC/vivado_FOC.srcs/constrs_1/new/fpga_top.xdc rfile:../../../vivado_FOC.srcs/constrs_1/new/fpga_top.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/constrs_1/new/fpga_top.xdc rfile:../../../vivado_FOC.srcs/constrs_1/new/fpga_top.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:1 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN H16 [get_ports clk_120m]
 set_property src_info {type:XDC file:1 line:2 export:INPUT save:INPUT read:READ} [current_design]

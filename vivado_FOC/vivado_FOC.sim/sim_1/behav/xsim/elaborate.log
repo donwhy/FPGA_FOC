@@ -1,0 +1,28 @@
+Vivado Simulator v2023.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: M:/Xilinx/Vivado/2023.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot fpga_top_behav xil_defaultlib.fpga_top xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+WARNING: [XSIM 43-4100] "D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.f_30M
+Compiling module xil_defaultlib.i2c_register_read(CLK_DIV=16'b01...
+Compiling module xil_defaultlib.adc_ad7928(CH_CNT=3'b010,CH0=3'b...
+Compiling module xil_defaultlib.clark_tr
+Compiling module xil_defaultlib.sincos
+Compiling module xil_defaultlib.park_tr
+Compiling module xil_defaultlib.pi_controller(Kp=24'b01010000110...
+Compiling module xil_defaultlib.cartesian2polar
+Compiling module xil_defaultlib.svpwm
+Compiling module xil_defaultlib.hold_detect(SAMPLE_DELAY=16'b011...
+Compiling module xil_defaultlib.foc_top_default
+Compiling module xil_defaultlib.uart_monitor
+Compiling module xil_defaultlib.fpga_top
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot fpga_top_behav

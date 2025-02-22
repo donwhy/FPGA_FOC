@@ -1,0 +1,18 @@
+0.7
+2020.2
+Oct 13 2023
+20:47:58
+D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.sim/sim_1/behav/xsim/glbl.v,1697210495,verilog,,,,glbl,,uvm,,,,,,
+D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/adc_ad7928.sv,1740114140,systemVerilog,,D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/cartesian2polar.sv,,adc_ad7928,,uvm,,,,,,
+D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/cartesian2polar.sv,1740114140,systemVerilog,,D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/clark_tr.sv,,cartesian2polar,,uvm,,,,,,
+D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/clark_tr.sv,1740114140,systemVerilog,,D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/foc_top.sv,,clark_tr,,uvm,,,,,,
+D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/f_30M.v,1740114140,verilog,,,,f_30M,,uvm,,,,,,
+D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/foc_top.sv,1740114140,systemVerilog,,D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/hold_detect.sv,,foc_top,,uvm,,,,,,
+D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/fpga_top.sv,1740114140,systemVerilog,,,,fpga_top,,uvm,,,,,,
+D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/hold_detect.sv,1740114140,systemVerilog,,D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/i2c_register_read.sv,,hold_detect,,uvm,,,,,,
+D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/i2c_register_read.sv,1740114140,systemVerilog,,D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/park_tr.sv,,i2c_register_read,,uvm,,,,,,
+D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/park_tr.sv,1740114140,systemVerilog,,D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/pi_controller.sv,,park_tr,,uvm,,,,,,
+D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/pi_controller.sv,1740114140,systemVerilog,,D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/sincos.sv,,pi_controller,,uvm,,,,,,
+D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/sincos.sv,1740114140,systemVerilog,,D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/svpwm.sv,,sincos,,uvm,,,,,,
+D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/svpwm.sv,1740114140,systemVerilog,,D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/uart_monitor.sv,,svpwm,,uvm,,,,,,
+D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/uart_monitor.sv,1740114140,systemVerilog,,D:/Desktop/FPGA/FPGA_FOC/vivado_FOC/vivado_FOC.srcs/sources_1/new/fpga_top.sv,,uart_monitor,,uvm,,,,,,

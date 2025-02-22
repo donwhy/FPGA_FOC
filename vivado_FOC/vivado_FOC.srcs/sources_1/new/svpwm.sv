@@ -8,89 +8,41 @@
 //       3相PWM信号 pwm_a, pwm_b, pwm_c
 // 说明：该模块产生的 PWM 的频率是 clk 频率 / 2048。例如 clk 为 36.864MHz ，则 PWM 的频率为 36.864MHz / 2048 = 18kHz
 
+
 module svpwm (
-    input  wire        rstn,
-    input  wire        clk,
-    input  wire [ 8:0] v_amp,                       // svpwm 的最大电压矢量的幅值
-    input  wire [11:0] v_rho,                       // 定子极坐标系下的电压矢量的幅值 Vsρ
-    input  wire [11:0] v_theta,                     // 定子极坐标系下的电压矢量的角度 Vsθ
-    output reg         pwm_en, pwm_a, pwm_b, pwm_c  // PWM使能信号 pwm_en, 3相PWM信号 pwm_a, pwm_b, pwm_c
+    input  wire        rstn,         // 复位信号，低有效
+    input  wire        clk,          // 时钟信号
+    input  wire [ 8:0] v_amp,        // 最大电压幅值
+    input  wire [11:0] v_rho,        // 定子极坐标系下的电压幅值 Vsρ
+    input  wire [11:0] v_theta,      // 定子极坐标系下的电压角度 Vsθ
+    output reg         pwm_en,       // PWM使能信号
+    output reg         pwm_a, pwm_b, pwm_c  // 3相PWM信号
 );
 
-localparam ROM_LATENCY = 11'd4;
 
-reg  [10:0] cnt;
-reg  [11:0] rom_x;
-reg         rom_sy;
-reg  [ 8:0] rom_y;
-reg  [ 8:0] mul_i1;
-reg  [11:0] mul_i2;
-wire [20:0] mul_y = mul_i1 * mul_i2;
-reg  [11:0] mul_o;
-reg         sya, syb, syc;
-reg  [ 8:0] ya, yb;
-reg  [ 9:0] pwma_duty, pwmb_duty, pwmc_duty;
-reg  [10:0] pwma_lb, pwma_ub, pwmb_lb, pwmb_ub, pwmc_lb, pwmc_ub;
-reg         pwm_act;
+localparam ROM_LATENCY = 11'd4; // ROM查找延迟，常量4
 
+// 内部寄存器定义
+reg  [10:0] cnt;  // 计数器，用于PWM周期计数
+reg  [11:0] rom_x;  // 查找表的X地址（电压矢量的角度）
+reg         rom_sy;  // 查找表的符号标志
+reg  [ 8:0] rom_y;  // 查找表的Y数据（电压幅值）
+reg  [ 8:0] mul_i1; // 乘法器输入1（电压幅值）
+reg  [11:0] mul_i2; // 乘法器输入2（电压矢量的幅值 Vsρ）
+wire [20:0] mul_y = mul_i1 * mul_i2;  // 乘法结果（电压幅值和角度计算的中间结果）
+reg  [11:0] mul_o;  // 乘法器输出（用于存储乘法结果的高部分）
+reg         sya, syb, syc;  // 三个相的符号标志
+reg  [ 8:0] ya, yb;  // 计算出的PWM占空比（幅值）
+reg  [ 9:0] pwma_duty, pwmb_duty, pwmc_duty; // 三相PWM占空比
+reg  [10:0] pwma_lb, pwma_ub, pwmb_lb, pwmb_ub, pwmc_lb, pwmc_ub; // 三相PWM的上下限
+reg         pwm_act; // PWM活动标志，用于控制是否输出PWM
+
+// 计数器
 always @ (posedge clk or negedge rstn)
-    if(~rstn)
-        mul_o <= '0;
+    if (~rstn)
+        cnt <= '0;  // 复位时清空计数器
     else
-        mul_o <= mul_y[20:9];
-
-always @ (posedge clk or negedge rstn)
-    if(~rstn)
-        cnt <= '0;
-    else
-        cnt <= cnt + 11'd1;
-
-always @ (posedge clk or negedge rstn)
-    if(~rstn) begin
-        rom_x <= '0;
-        mul_i1 <= '0;
-        mul_i2 <= '0;
-        {sya, syb, syc} <= '0;
-        {ya, yb} <= '0;
-        {pwma_duty, pwmb_duty, pwmc_duty} <= '0;
-        {pwma_lb, pwma_ub, pwmb_lb, pwmb_ub, pwmc_lb, pwmc_ub} <= '0;
-        pwm_act <= 1'b0;
-    end else begin
-        if(cnt==11'd2041-ROM_LATENCY) begin
-            rom_x <= v_theta;
-            mul_i1 <= v_amp;
-            mul_i2 <= v_rho;
-        end else if(cnt==11'd2042-ROM_LATENCY) begin
-            rom_x <= rom_x - 12'd1365;
-        end else if(cnt==11'd2043-ROM_LATENCY) begin
-            rom_x <= rom_x - 12'd1365;
-            mul_i2 <= mul_o + 12'd8;
-        end else if(cnt==11'd2042) begin
-            mul_i1 <= rom_y;
-            sya <= rom_sy;
-        end else if(cnt==11'd2043) begin
-            mul_i1 <= rom_y;
-            syb <= rom_sy;
-        end else if(cnt==11'd2044) begin
-            mul_i1 <= rom_y;
-            syc <= rom_sy;
-            ya <= mul_o[11:3];
-        end else if(cnt==11'd2045) begin
-            yb <= mul_o[11:3];
-        end else if(cnt==11'd2046) begin
-            pwma_duty <= sya ? 10'd512-{1'b0, ya        } : 10'd512+{1'b0, ya        };
-            pwmb_duty <= syb ? 10'd512-{1'b0, yb        } : 10'd512+{1'b0, yb        };
-            pwmc_duty <= syc ? 10'd512-{1'b0,mul_o[11:3]} : 10'd512+{1'b0,mul_o[11:3]};
-        end else if(cnt==11'd2047) begin
-            pwma_lb <= 11'd0 + {1'b0, pwma_duty};
-            pwma_ub <= 11'd0 - {1'b0, pwma_duty};
-            pwmb_lb <= 11'd0 + {1'b0, pwmb_duty};
-            pwmb_ub <= 11'd0 - {1'b0, pwmb_duty};
-            pwmc_lb <= 11'd0 + {1'b0, pwmc_duty};
-            pwmc_ub <= 11'd0 - {1'b0, pwmc_duty};
-            pwm_act <= 1'b1;
-        end
-    end
+        cnt <= cnt + 11'd1;  // 每个时钟周期增加1
 
 always @ (posedge clk or negedge rstn)
     if(~rstn) begin
@@ -105,8 +57,7 @@ always @ (posedge clk or negedge rstn)
         pwm_c <= ~pwm_act || cnt<=pwmc_lb || cnt>pwmc_ub;
     end
 
-
-
+// 电压矢量的符号计算部分
 reg [11:0] x1;
 reg [ 9:0] x2;
 reg        s2;
@@ -115,36 +66,41 @@ reg [ 8:0] y3;
 reg        s3;
 reg        z3;
 
+// 根据ROM查找表地址，计算电压矢量的符号
 always @ (posedge clk)
-    if(rom_x >= 12'd2048)
-        x1 <= 12'd0 - rom_x;
+    if (rom_x >= 12'd2048)
+        x1 <= 12'd0 - rom_x;  // 如果角度大于2048，则计算负值
     else
-        x1 <= rom_x;
+        x1 <= rom_x;  // 否则，直接使用ROM地址
 
+// 计算出电压矢量的符号，并对输出进行调整
 always @ (posedge clk) begin
-    z2 <= x1 == 12'd1024;
-    if( x1 <= 12'd1024 ) begin
-        x2 <= x1[9:0];
-        s2 <= 1'b0;
+    z2 <= x1 == 12'd1024;  // 如果x1等于1024，表示是一个特定的角度
+    if (x1 <= 12'd1024) begin
+        x2 <= x1[9:0];  // 低10位作为x2，调整数据格式
+        s2 <= 1'b0;  // 设置符号为0
     end else begin
-        x2 <= 10'd0 - x1[9:0];
-        s2 <= 1'b1;
+        x2 <= 10'd0 - x1[9:0];  // 如果x1大于1024，取反
+        s2 <= 1'b1;  // 设置符号为1
     end
 end
 
+// 更新z3和s3用于后续符号计算
 always @ (posedge clk) begin
     z3 <= z2;
     s3 <= s2;
 end
 
+// 更新ROM的符号，并根据符号调整电压矢量的幅值
 always @ (posedge clk) begin
     rom_sy <= s3;
-    if(z3)
-        rom_y <= 9'd0;
+    if (z3)
+        rom_y <= 9'd0;  // 如果z3为1，则电压幅值为0
     else
-        rom_y <= y3;
+        rom_y <= y3;  // 否则，使用查找表输出的值
 end
 
+// 查找表，根据x2值从ROM中获取相应的电压幅值
 always @ (posedge clk)
 case(x2)
 10'd0:y3<=9'd442;

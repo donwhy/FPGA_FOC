@@ -3,10 +3,10 @@
 <!--The data in this file is primarily intended for consumption by Xilinx tools.
 The structure and the elements are likely to change over the next few releases.
 This means code written to parse this file will need to be revisited each subsequent release.-->
-<application name="pa" timeStamp="Wed Mar 22 22:38:50 2023">
+<application name="pa" timeStamp="Sat Feb 22 00:49:32 2025">
 <section name="Project Information" visible="false">
 <property name="ProjectID" value="0c9126a6ccbb47f191d070bc000441a0" type="ProjectID"/>
-<property name="ProjectIteration" value="680" type="ProjectIteration"/>
+<property name="ProjectIteration" value="683" type="ProjectIteration"/>
 </section>
 <section name="PlanAhead Usage" visible="true">
 <item name="Project Data">
@@ -124,11 +124,6 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="TaskBanner_CLOSE" value="24" type="GuiHandlerData"/>
 <property name="XPG_IPSymbol_SHOW_DISABLED_PORTS" value="2" type="GuiHandlerData"/>
 <property name="XPG_TabbedPane_TABBED_PANE" value="1" type="GuiHandlerData"/>
-</item>
-<item name="Other">
-<property name="GuiMode" value="91" type="GuiMode"/>
-<property name="BatchMode" value="0" type="BatchMode"/>
-<property name="TclMode" value="76" type="TclMode"/>
 </item>
 </section>
 </application>

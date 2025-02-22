@@ -7,24 +7,28 @@
 //        在 o_sin 和 o_cos 上产生 sinθ 和 cosθ （-1~+1 被映射为 -16384~+16384）
 
 module sincos(
-    input  wire               rstn,
-    input  wire               clk,
-    input  wire               i_en,
-    input  wire        [11:0] i_theta,      // a round is mapped to 0~4095
-    output reg                o_en,
-    output reg  signed [15:0] o_sin, o_cos  // -1~+1 is mapped to -16384~+16384
+    input  wire               rstn,           // 复位信号 (低有效)
+    input  wire               clk,            // 时钟信号
+    input  wire               i_en,           // 启动计算信号
+    input  wire        [11:0] i_theta,        // 输入角度 (0~4095)，表示0~2π之间的角度
+    output reg                o_en,           // 计算完成标志
+    output reg  signed [15:0] o_sin, o_cos    // 输出正弦和余弦值，-1~+1，范围 -16384 ~ 16384
 );
 
+// 定义状态机的状态：IDLE、S1、S2、S3、S4、S5
 enum logic [2:0] {IDLE, S1, S2, S3, S4, S5} stat;
 
-reg [11:0] theta_a, theta_b;
-reg        cos_z, cos_s, sin_z, sin_s;
-reg [ 9:0] rom_x;
-reg [14:0] rom_y;
-reg signed [15:0] cos_tmp;
+// 内部寄存器
+reg [11:0] theta_a, theta_b; // 存储角度值
+reg cos_z, cos_s, sin_z, sin_s; // 控制信号，用于确定余弦和正弦的符号
+reg [9:0] rom_x;  // ROM地址，用于查找正弦余弦值
+reg [14:0] rom_y; // ROM输出值
+reg signed [15:0] cos_tmp; // 临时存储计算的余弦值
 
+// 复位与状态机更新逻辑
 always @ (posedge clk or negedge rstn)
-    if(~rstn) begin
+    if (~rstn) begin
+        // 复位时清除状态和所有寄存器
         stat <= IDLE;
         {theta_a, theta_b} <= '0;
         {cos_z, cos_s, sin_z, sin_s} <= '0;
@@ -32,68 +36,84 @@ always @ (posedge clk or negedge rstn)
         cos_tmp <= '0;
         {o_en, o_sin, o_cos} <= '0;
     end else begin
-        o_en <= 1'b0;
-        case(stat)
-            IDLE: if(i_en) begin
-                stat <= S1;
-                theta_a <= i_theta - 12'd1024;
-                if(i_theta>12'd2048)
+        o_en <= 1'b0;  // 默认关闭输出使能
+        case (stat)
+            // IDLE状态：等待输入使能信号，初始化角度
+            IDLE: if (i_en) begin
+                stat <= S1;  // 进入状态S1
+                theta_a <= i_theta - 12'd1024; // 初始化theta_a
+                if (i_theta > 12'd2048)         // 如果角度大于2048，则取负
                     theta_b <= 12'd0 - i_theta;
                 else
-                    theta_b <= i_theta;
+                    theta_b <= i_theta;     // 否则，直接赋值给theta_b
             end
+
+            // S1状态：根据theta_a计算theta_b，并选择余弦的ROM索引
             S1: begin
-                stat <= S2;
-                if(theta_a>12'd2048)
-                    theta_b <= 12'd0 - theta_a;
+                stat <= S2;  // 进入状态S2
+                if (theta_a > 12'd2048)
+                    theta_b <= 12'd0 - theta_a;  // 如果theta_a大于2048，取负
                 else
-                    theta_b <= theta_a;
-                if(theta_b>12'd1024) begin
-                    rom_x <= 10'd0 - theta_b[9:0];
-                    cos_z <= 1'b0;
-                    cos_s <= 1'b1;
+                    theta_b <= theta_a;          // 否则直接赋值给theta_b
+
+                // 计算余弦值的ROM索引
+                if (theta_b > 12'd1024) begin
+                    rom_x <= 10'd0 - theta_b[9:0];  // 反转低10位作为ROM地址
+                    cos_z <= 1'b0;  // cos_z为0
+                    cos_s <= 1'b1;  // cos_s为1
                 end else begin
-                    rom_x <= theta_b[9:0];
-                    cos_z <= theta_b==12'd1024;
-                    cos_s <= 1'b0;
+                    rom_x <= theta_b[9:0]; // 直接取低10位作为ROM地址
+                    cos_z <= (theta_b == 12'd1024); // 当theta_b为1024时，cos_z为1
+                    cos_s <= 1'b0;  // cos_s为0
                 end
             end
+
+            // S2状态：选择正弦的ROM索引
             S2: begin
-                stat <= S3;
-                if(theta_b>12'd1024) begin
-                    rom_x <= 10'd0 - theta_b[9:0];
-                    sin_z <= 1'b0;
-                    sin_s <= 1'b1;
+                stat <= S3;  // 进入状态S3
+                if (theta_b > 12'd1024) begin
+                    rom_x <= 10'd0 - theta_b[9:0];  // 反转低10位作为ROM地址
+                    sin_z <= 1'b0;  // sin_z为0
+                    sin_s <= 1'b1;  // sin_s为1
                 end else begin
-                    rom_x <= theta_b[9:0];
-                    sin_z <= theta_b==12'd1024;
-                    sin_s <= 1'b0;
+                    rom_x <= theta_b[9:0]; // 直接取低10位作为ROM地址
+                    sin_z <= (theta_b == 12'd1024); // 当theta_b为1024时，sin_z为1
+                    sin_s <= 1'b0;  // sin_s为0
                 end
             end
+
+            // S3状态：读取ROM并计算余弦值
             S3: begin
-                stat <= S4;
-                if(cos_z)
-                    cos_tmp <= '0;
-                else if(cos_s)
-                    cos_tmp <= -$signed({1'b0,rom_y});
+                stat <= S4;  // 进入状态S4
+                if (cos_z)
+                    cos_tmp <= '0;  // 如果cos_z为1，余弦值为0
+                else if (cos_s)
+                    cos_tmp <= -$signed({1'b0, rom_y});  // 如果cos_s为1，余弦值为负
                 else
-                    cos_tmp <=  $signed({1'b0,rom_y});
+                    cos_tmp <= $signed({1'b0, rom_y});  // 否则，余弦值为正
             end
+
+            // S4状态：输出计算结果
             S4: begin
-                stat <= S5;
-                o_en <= 1'b1;
-                o_cos <= cos_tmp;
-                if(sin_z)
-                    o_sin <= '0;
-                else if(sin_s)
-                    o_sin <= -$signed({1'b0,rom_y});
+                stat <= S5;  // 进入状态S5
+                o_en <= 1'b1;  // 使能输出
+                o_cos <= cos_tmp;  // 输出计算的余弦值
+                if (sin_z)
+                    o_sin <= '0;  // 如果sin_z为1，正弦值为0
+                else if (sin_s)
+                    o_sin <= -$signed({1'b0, rom_y});  // 如果sin_s为1，正弦值为负
                 else
-                    o_sin <= $signed({1'b0,rom_y});
+                    o_sin <= $signed({1'b0, rom_y});  // 否则，正弦值为正
             end
+
+            // S5状态：返回IDLE，等待下一个计算
             S5: stat <= IDLE;
+
         endcase
     end
 
+
+// ROM查表：根据rom_x的值，输出对应的sin/cos值
 always @ (posedge clk)
 case(rom_x)
 10'd0:rom_y<=15'd16384;
