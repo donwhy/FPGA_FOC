@@ -5,89 +5,110 @@
 // 功能： 把直角坐标系 (x,y) 转换为极坐标系 
 
 module cartesian2polar #(
-    parameter ATTENUAION = 0
+    parameter ATTENUAION = 0    // 参数：衰减值，用于对幅值的调整
 ) (
-    input  wire               rstn,
-    input  wire               clk,
-    input  wire               i_en,
-    input  wire signed [15:0] i_x, i_y,
-    output reg                o_en,
-    output reg         [11:0] o_rho,
-    output reg         [11:0] o_theta
+    input  wire               rstn,    // 复位信号，低电平有效
+    input  wire               clk,     // 时钟信号
+    input  wire               i_en,    // 使能信号
+    input  wire signed [15:0] i_x,     // 输入的x坐标（直角坐标系）
+    input  wire signed [15:0] i_y,     // 输入的y坐标（直角坐标系）
+    output reg                o_en,    // 输出使能信号
+    output reg [11:0]         o_rho,   // 输出的径向距离（rho）极坐标系的 ρ 输出值
+    output reg [11:0]         o_theta  // 输出的角度（theta）极坐标系的 θ 输出值
 );
 
-reg [ 4:0] cnt;
-reg        signx, signy, signxy;
-reg [15:0] absx, absy;  // 0~32768
-reg [27:0] smtb, smta;
-reg [27:0] accb;
-reg [15:0] acca;
+reg [ 4:0] cnt;                 // 计数器，用于实现数据采样的时序控制
+reg        signx, signy, signxy; // x, y, 和 x, y 组合的符号位
+reg [15:0] absx, absy;          // x 和 y 的绝对值
+reg [27:0] smtb, smta;          // 用于存储中间计算结果的寄存器（用于计算rho和theta）
+reg [27:0] accb;                // 累加器，用于加权求和 计算中间值
+reg [15:0] acca;                // 累加器，用于加权求和 计算中间值
 
-reg [8:0] rom_a, rom_theta;
-reg [8:0] a;
-reg [11:0] theta;
-reg [15:0] amp;
+reg [8:0] rom_a, rom_theta;    // 用于查找表的中间存储寄存器
+reg [8:0] a;                   // 变量 a
+reg [11:0] theta;              // 计算出的角度 θ
+reg [15:0] amp;                // 计算出的幅度 ρ
 
-wire [23:0] mul = {15'd0,a} * {8'd0,absx};
+// 中间计算：幅值的乘法和加法，调整幅值的衰减
+wire [23:0] mul = {15'd0,a} * {8'd0,absx}; // 用于计算幅度的乘法操作
+wire [15:0] amp_w = {2'b0,mul[23:10]} + absx; // 幅度计算结果
+wire [15:0] ampatt_w = amp_w >> ATTENUAION;   // 幅度衰减
 
-wire [15:0] amp_w = {2'b0,mul[23:10]} + absx;
-wire [15:0] ampatt_w = amp_w >> ATTENUAION;
 
+
+// 处理阶段：每个时钟周期的操作
 always @ (posedge clk or negedge rstn)
-    if(~rstn) begin
+    if (~rstn) begin
+        // 复位状态，初始化所有寄存器
         cnt <= '0;
         {signx, signy, signxy, absx, absy, smtb, smta, accb, acca} <= '0;
         {a, theta, amp} <= '0;
         {o_en, o_rho, o_theta} <= '0;
     end else begin
+        // 在每个时钟周期进行的操作
         o_en <= 1'b0;
-        if(cnt==5'd0) begin
+        
+        // 当计数器为0时，开始处理输入值
+        if (cnt == 5'd0) begin
             accb <= '0;
             acca <= '0;
-            signx <= i_x<$signed(16'd0);
-            signy <= i_y<$signed(16'd0);
-            absx  <= i_x<$signed(16'd0) ? -i_x : i_x;
-            absy  <= i_y<$signed(16'd0) ? -i_y : i_y;
-            if(i_en)
-                cnt <= 5'd30;
+            signx <= i_x < $signed(16'd0); // 判断x的符号
+            signy <= i_y < $signed(16'd0); // 判断y的符号
+            absx  <= i_x < $signed(16'd0) ? -i_x : i_x;  // 取x的绝对值
+            absy  <= i_y < $signed(16'd0) ? -i_y : i_y;  // 取y的绝对值
+            
+            // 如果输入使能信号为1，则开始处理
+            if (i_en)
+                cnt <= 5'd30;  // 设置计数器为30，进入计算阶段
         end else begin
+            // 否则，继续进行后续的计算和操作
             cnt <= cnt - 5'd1;
-            if(cnt>=5'd30) begin
-                signxy <= absx < absy;
-                if(absx < absy) begin
+            
+            // 当计数器大于等于30时，开始计算ρ和θ的值
+            if (cnt >= 5'd30) begin
+                // 根据x和y的绝对值，确定大的值和小的值
+                signxy <= absx < absy;  // 判断x是否小于y
+                if (absx < absy) begin
                     absx <= absy;
-                    smtb <= {absy, 12'h0};
-                    smta <= {absx, 12'h0};
+                    smtb <= {absy, 12'h0};  // 存储更大的y值
+                    smta <= {absx, 12'h0};  // 存储较小的x值
                 end else begin
-                    smtb <= {absx, 12'h0};
-                    smta <= {absy, 12'h0};
+                    smtb <= {absx, 12'h0};  // 存储较大的x值
+                    smta <= {absy, 12'h0};  // 存储较小的y值
                 end
-            end else if(cnt>5'd4) begin
-                if( accb + smtb <= 28'h8000 ) begin
+            end else if (cnt > 5'd4) begin
+                // 当计数器大于4时，进行幅值和角度的累加计算
+                if (accb + smtb <= 28'h8000) begin
                     accb <= accb + smtb;
                     acca <= acca + smta[15:0];
                 end
-                smtb <= smtb >> 1;
-                smta <= smta >> 1;
-            end else if(cnt==5'd4) begin
+                smtb <= smtb >> 1;  // 将大值右移一位
+                smta <= smta >> 1;  // 将小值右移一位
+            end else if (cnt == 5'd4) begin
+                // 根据累加值来查表得到a和theta的值
                 a <= acca[15] ? 9'd424 : rom_a;
-                theta <= (acca[15:3]>=13'd4090) ? 12'd512 : {3'b0,rom_theta};
-            end else if(cnt==5'd3) begin
-                if(signxy) begin
+                theta <= (acca[15:3] >= 13'd4090) ? 12'd512 : {3'b0, rom_theta};
+            end else if (cnt == 5'd3) begin
+                // 根据符号位调整theta的值
+                if (signxy) begin
                     theta <= 12'd1024 - theta;
                 end
-            end else if(cnt==5'd2) begin
+            end else if (cnt == 5'd2) begin
+                // 计算最终的幅值和theta值
                 amp <= ampatt_w;
-                if(signx)
+                if (signx)
                     theta <= 12'd2048 - theta;
-            end else if(cnt==5'd1) begin
-                o_en <= 1'b1;
-                o_rho <= amp>16'd4095 ? 12'd4095 : amp[11:0];
-                o_theta <= signy ? 12'd0-theta : theta;
+            end else if (cnt == 5'd1) begin
+                // 输出结果
+                o_en <= 1'b1;   // 使能输出信号
+                o_rho <= amp > 16'd4095 ? 12'd4095 : amp[11:0];  // 设置rho值
+                o_theta <= signy ? 12'd0 - theta : theta;  // 设置theta值
             end
         end
     end
 
+
+// 查表操作：根据累加值计算a和theta的值
 always @ (posedge clk)
 case(acca[14:3])
 12'd0:{rom_a,rom_theta}<={9'd0,9'd0};

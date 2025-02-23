@@ -17,8 +17,8 @@ module adc_ad7928 #(
     parameter [2:0] CH6 = 3'd6,     // 指示了 CH6 对应 AD7928 的哪个通道
     parameter [2:0] CH7 = 3'd7      // 指示了 CH7 对应 AD7928 的哪个通道
 ) (
-    input  wire        rstn,
-    input  wire        clk,
+    input  wire        rstn,         // 复位信号，低电平有效
+    input  wire        clk,          // 时钟信号
     // -------------------- SPI 接口，应该接到 AD7928 芯片上   ---------------------------------------------------------------
     output reg         spi_ss,      // SPI 接口：SS
     output reg         spi_sck,     // SPI 接口：SCK
@@ -37,8 +37,10 @@ module adc_ad7928 #(
     output wire [11:0] o_adc_value7 // 当 o_en_adc 产生一个时钟周期的高电平脉冲时，CH7 的 ADC 转换结果出现在该信号上
 );
 
-localparam WAIT_CNT = 8'd6;
+// 常量定义
+localparam WAIT_CNT = 8'd6;  // SPI 通信过程中等待的时钟周期数
 
+// 通道映射，将 CH0 至 CH7 映射到具体的通道
 wire [2:0] channels [8];
 assign channels[0] = CH0;
 assign channels[1] = CH1;
@@ -49,15 +51,17 @@ assign channels[5] = CH5;
 assign channels[6] = CH6;
 assign channels[7] = CH7;
 
-reg  [ 7:0] cnt;
-reg  [ 2:0] idx;
-reg  [ 2:0] addr;
-reg  [11:0] wshift;
-reg         nfirst;
-reg  [11:0] data_in_latch;
-reg         sck_pre;
-reg  [11:0] ch_value [8];
+// 寄存器声明
+reg  [7:0] cnt;                  // 用于计数的寄存器
+reg  [2:0] idx;                  // 当前选择的通道索引
+reg  [2:0] addr;                 // 地址寄存器，表示当前通道的地址
+reg  [11:0] wshift;              // 用于 SPI 传输的数据位移寄存器
+reg         nfirst;              // 标记是否为第一次转换
+reg  [11:0] data_in_latch;       // 用于接收从 SPI 接口传入的数据
+reg         sck_pre;             // 用于 SPI 时钟的寄存器
+reg  [11:0] ch_value [8];        // 存储每个通道的 ADC 值
 
+// 输出每个通道的 ADC 值
 assign o_adc_value0 = ch_value[0];
 assign o_adc_value1 = ch_value[1];
 assign o_adc_value2 = ch_value[2];
@@ -67,71 +71,79 @@ assign o_adc_value5 = ch_value[5];
 assign o_adc_value6 = ch_value[6];
 assign o_adc_value7 = ch_value[7];
 
+// SPI 时钟信号生成：保持时钟初始状态为高电平，后续会根据需要改变
 always @ (posedge clk or negedge rstn)
     if(~rstn)
         spi_sck <= 1'b1;
     else
         spi_sck <= sck_pre;
 
+// 主控制逻辑：控制 SPI 信号和 ADC 转换过程
 always @ (posedge clk or negedge rstn)
     if(~rstn) begin
         cnt <= '0;
-        idx <= 3'd7;
-        addr <= 3'd0;
-        wshift <= '1;
-        {spi_ss, sck_pre, spi_mosi} <= '1;
+        idx <= 3'd7;                // 初始化通道索引
+        addr <= 3'd0;               // 初始化地址
+        wshift <= '1;               // 初始化数据位移
+        {spi_ss, sck_pre, spi_mosi} <= '1';  // 初始化 SPI 信号
     end else begin
-        if(cnt==8'd0) begin
-            {spi_ss, sck_pre, spi_mosi} <= '1;
-            if(idx!='0) begin
+        // 控制计数器状态和 SPI 信号
+        if(cnt == 8'd0) begin
+            {spi_ss, sck_pre, spi_mosi} <= '1';  // 初始化 SPI 信号
+            if(idx != '0) begin
                 cnt <= 8'd1;
-                idx <= idx - 3'd1;
+                idx <= idx - 3'd1;  // 递减通道索引
             end else if(i_sn_adc) begin
                 cnt <= 8'd1;
-                idx <= CH_CNT;
+                idx <= CH_CNT;      // 如果 ADC 开始转换信号为高，则设置通道数量
             end
-        end else if(cnt==8'd1) begin
-            {spi_ss, sck_pre, spi_mosi} <= '1;
-            addr <= (idx=='0) ? CH_CNT : idx - 3'd1;
+        end else if(cnt == 8'd1) begin
+            // 设置 SPI 信号
+            {spi_ss, sck_pre, spi_mosi} <= '1';
+            addr <= (idx == '0) ? CH_CNT : idx - 3'd1; // 设置当前通道地址
             cnt <= cnt + 8'd1;
-        end else if(cnt==8'd2) begin
-            {spi_ss, sck_pre, spi_mosi} <= '1;
+        end else if(cnt == 8'd2) begin
+            // 设置要传输的命令，表示选择某个通道进行 ADC 转换
+            {spi_ss, sck_pre, spi_mosi} <= '1';
             wshift <= {1'b1, 1'b0, 1'b0, channels[addr], 2'b11, 1'b0, 1'b0, 2'b11};
             cnt <= cnt + 8'd1;
-        end else if(cnt<WAIT_CNT) begin
-            {spi_ss, sck_pre, spi_mosi} <= '1;
+        end else if(cnt < WAIT_CNT) begin
+            // 等待一段时间
+            {spi_ss, sck_pre, spi_mosi} <= '1';
             cnt <= cnt + 8'd1;
-        end else if(cnt<WAIT_CNT+8'd32) begin
-            spi_ss <= 1'b0;
-            sck_pre <= ~sck_pre;
+        end else if(cnt < WAIT_CNT + 8'd32) begin
+            // 传输数据的过程
+            spi_ss <= 1'b0;  // SPI 使能信号
+            sck_pre <= ~sck_pre;  // SPI 时钟信号反转
             if(sck_pre)
-                {spi_mosi,wshift} <= {wshift,1'b1};
+                {spi_mosi, wshift} <= {wshift, 1'b1};  // 移位传输数据
             cnt <= cnt + 8'd1;
         end else begin
+            // 结束传输，初始化 SPI 信号
             spi_ss <= 1'b0;
-            {sck_pre, spi_mosi} <= '1;
+            {sck_pre, spi_mosi} <= '1';
             cnt <= 8'd0;
         end
     end
 
+// ADC 转换结果接收并存储
 always @ (posedge clk or negedge rstn)
     if(~rstn) begin
         o_en_adc <= 1'b0;
         nfirst <= 1'b0;
-        data_in_latch <= '0;
-        for(int ii=0; ii<8; ii++) ch_value[ii] <= '0;
+        data_in_latch <= '0';
+        for(int ii = 0; ii < 8; ii++) ch_value[ii] <= '0'; // 清空所有通道值
     end else begin
         o_en_adc <= 1'b0;
-        if(cnt>=WAIT_CNT+8'd2 && cnt<WAIT_CNT+8'd32) begin
-            if(spi_sck)
-                data_in_latch <= {data_in_latch[10:0], spi_miso};
-        end else if(cnt==WAIT_CNT+8'd32) begin
-            if(idx=='0) begin
+        if(cnt >= WAIT_CNT + 8'd2 && cnt < WAIT_CNT + 8'd32) begin
+            if(spi_sck) 
+                data_in_latch <= {data_in_latch[10:0], spi_miso}; // 接收数据
+        end else if(cnt == WAIT_CNT + 8'd32) begin
+            if(idx == '0) begin
                 nfirst <= 1'b1;
-                o_en_adc <= nfirst;
+                o_en_adc <= nfirst;  // 转换完成信号
             end
-            ch_value[idx] <= data_in_latch;
+            ch_value[idx] <= data_in_latch;  // 存储转换结果
         end
     end
-
 endmodule
